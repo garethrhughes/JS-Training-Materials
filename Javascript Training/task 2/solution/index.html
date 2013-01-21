@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Tab Example Solution</title>
+		<meta charset=UTF-8 />
+		
+		<script type=text/javascript src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
+		<script type=text/javascript>
+			$(function(){
+				$('#tabs li a').click(function(){
+					var content = $('#content');
+					var href = this.href;
+					
+					content.fadeOut(function(){
+						content.load(href, function(){
+							content.fadeIn();
+						});
+					});
+					
+					return false;
+				});		
+
+				$('#content').delegate('a.hello', 'click', function(){
+					alert('Hello!');
+					return false;
+				});	
+
+				$('a.new-window').live('click', function(){
+					window.open(this.href, null);
+					return false;
+				});	
+			});
+
+		</script>
+		
+	</head>
+
+	<body>
+	
+		<section>
+		
+			<ul id=tabs>
+				<li><a href=tabs/page1.html>Page 1</a></li>
+				<li><a href=tabs/page2.html>Page 2</a></li>
+				<li><a href=tabs/page3.html>Page 3</a></li>
+			</ul>
+			
+			<div id=content>
+				<p>Some content goes here.</p>
+			</div>
+			
+		</section>
+		
+	</body>
+
+</html>

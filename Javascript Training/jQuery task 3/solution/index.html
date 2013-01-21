@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery Example Solution</title>
+		<meta charset=UTF-8 />
+		
+		<script type=text/javascript src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+		<script type=text/javascript>
+			$(function(){
+			
+			  $('ul#list1').delegate('li', 'click', function(){
+					$(this).appendTo('#list2');
+				});
+			});
+		</script>
+		
+		<style type=text/css>
+			* { padding: 0; margin: 0; }
+			ul { float: left; width: 200px; }
+		</style>
+		
+	</head>
+
+	<body>
+		<ul id=list1>
+			<li>List Item 1</li>
+			<li>List Item 2</li>
+			<li>List Item 3</li>
+			<li>List Item 4</li>
+			<li>List Item 5</li>
+			<li>List Item 6</li>
+			<li>List Item 7</li>
+			<li>List Item 8</li>
+		</ul>
+		
+		<ul id=list2>
+			<li>List Item A</li>
+		</ul>
+	</body>
+
+</html>

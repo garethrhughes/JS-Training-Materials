@@ -1,0 +1,21 @@
+Create a page with simple ajax tabs
+
+The tabs will display different text based on an ajax request. 
+
+Objectives
+
+1) At least 3 tabs
+2) Should be extensible, not needing excessive JS to add more tabs.
+3) Attach an event to a link in one of the tabs that alerts "hello"
+4) Have a link in a tab which opens a new window
+5) Works in IE 8, Firefox and Chrome
+
+-- bonus points if the content fades out then back in
+
+Notes
+
+Ajax can request plain HTML files to avoid server side tech.
+Tabs can be simply a list of unstyled items that you can click.
+Use latest jQuery for this exercise.
+
+Time Required 1h

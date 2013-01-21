@@ -1,0 +1,14 @@
+Create a javascript calendar control.
+
+Objectives
+
+1) Be able to go back and forward through months and years
+2) Events should fire before and after the month changes
+3) Dates in previous and next months should be shown where appropriate
+4) Grey out the dates not in the current month (or at least apply a class)
+5) Highlight the current day.
+
+Notes
+Can use jQuery and jQuery templates for this
+
+Time Required 5h

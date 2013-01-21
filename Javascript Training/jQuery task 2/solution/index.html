@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>jQuery Example Solution</title>
+		<meta charset=UTF-8 />
+		
+		<script type=text/javascript src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+		<script type=text/javascript>
+			$(function(){
+				
+				$('#submit').click(function(){
+					$('#square').slideToggle();
+					return false;
+				});
+				
+			});
+		</script>
+		
+		<style type=text/css>
+			* { padding: 0; margin: 0; }
+			#square { width: 500px; height: 100px; background-color: red; }
+		</style>
+		
+	</head>
+
+	<body>
+		<input type=submit value=Toggle id=submit />
+		<div id=square></div>
+	</body>
+
+</html>

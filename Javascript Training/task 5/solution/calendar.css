@@ -1,0 +1,79 @@
+/* 
+ * Calendar control
+ * Stolen from capita-di  
+ */
+
+div.calendar-controls {
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: 1px solid #C6C2B9;
+    }
+
+div.calendar-controls span, div.calendar-controls a {
+    display: inline-block;
+    vertical-align: middle;
+    }
+
+div.calendar-controls a {    
+    width: 8px;
+    height: 14px;
+    background: no-repeat center transparent;
+    overflow: hidden;
+    text-indent: -9999em;
+    }
+
+div.calendar-controls a.calendar-prev {
+    background-image: url(calendar-arrow-left.gif);
+    }
+
+div.calendar-controls a.calendar-next {
+    background-image: url(calendar-arrow-right.gif);
+    }
+
+div.calendar-controls span {
+    padding: 5px 10px;
+    text-transform: uppercase;
+    }
+    
+div.calendar {
+	width: 200px;
+	}
+
+div.calendar table {
+    table-layout: fixed;
+    width: 100%;
+    margin-bottom: 20px;
+    }
+
+div.calendar table th {
+    color: #C6C2B9;
+    font-size: 0.85em;
+    padding: 3px 0;
+    }
+
+div.calendar table td {
+    background: #FFF;
+    border: 1px solid #C6C2B9;
+    height: 30px;
+    }
+
+div.calendar table td.other {
+    background: transparent;
+    }
+
+div.calendar table td > div.has-event {
+    cursor: pointer;
+    }
+
+div.calendar table td span.calendar-date {
+    padding: 3px;
+    font-size: 0.75em;
+    }
+    
+div.calendar table td span.calendar-date.current {
+    font-weight: bold;
+    }
+
+div.calendar table td.other span.calendar-date {
+    color: #C6C2B9;
+    }

@@ -1,0 +1,7 @@
+Make a div with 5 checkboxes inside, when they're all checked make the background color green, otherwise red.
+
+Objectives
+1) Add 5 checkboxes inside a div with a red background color
+2) On checkbox change determine if they're all checked, if they are make the background color green
+
+Time Required 1h

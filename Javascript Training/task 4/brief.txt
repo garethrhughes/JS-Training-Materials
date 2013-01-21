@@ -1,0 +1,20 @@
+Configure CKeditor and then create a simple ckeditor plugin that will 
+insert html such as youtube embed code into a page.
+
+Setting up ckeditor is a very common task and writing custom plugins is also quite common.
+
+Objectives
+
+1) Download the latest CKEditor 
+2) Create a form 
+3) Apply CKEditor to a text area in your form
+4) Define a toolbar which contains the following buttons; 
+     Source, Fullscreen, Bold, Italics, Formatting (H2, H3, p), Ordered list and Unordered list
+5) Create a plugin that uses the provided icon and add to the toolbar
+6) Plugin will insert html at current cursor location in editor
+7) This must work in IE8
+
+Notes:
+No need to use jQuery for this exercise
+
+Time Required 3h

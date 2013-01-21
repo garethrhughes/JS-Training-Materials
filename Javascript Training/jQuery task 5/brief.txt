@@ -1,0 +1,10 @@
+Create a div with text inside and a button that when clicked loads new data via 
+ajax then fades out the current div, replaces the text and fades it back in.
+
+Objectives 
+
+1) Create div with place holder text
+2) Create button that loads new data via ajax
+3) Fade out existing div replace the text then fade div in again
+
+Time Required <1h

@@ -1,0 +1,9 @@
+Make a list of items that when clicked will append the item to a 2nd list and remove them from the first.
+
+Objectives
+
+1) Create 2 lists
+2) Add list items to both
+3) Use jQuery to add a click event to the list items in list 1 which takes the item out of list 1 and adds it to list 2
+
+Time Required <1h

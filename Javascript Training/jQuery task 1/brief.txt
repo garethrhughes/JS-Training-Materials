@@ -1,0 +1,9 @@
+Using jQuery make a red square animate from the left edge of the screen to the right edge of the screen.
+
+Objectives
+
+1) Show a square on the page
+2) On page load start the square moving from one side of the page to the other
+3) Make sure the square does not go off the edge of the page.
+
+Time Required <1h

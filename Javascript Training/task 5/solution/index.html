@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Calendar Solution</title>
+		<meta charset=UTF-8 />
+		
+		<script type=text/javascript src=http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js></script>
+		<script type=text/javascript src=http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js></script>
+		<script type=text/javascript src=calendar.js></script>
+	
+        <link type="text/css" rel="stylesheet" media="screen" href="calendar.css" />
+		
+	</head>
+
+	<body>
+	
+		<script id=calendar-day type=text/x-jquery-tmpl>
+
+			<td class="${Other}">
+			          
+				<div>
+					<span class="calendar-date ${Current}">${Day}</span>
+				</div>
+			            
+			</td>
+
+		</script>
+	
+		<div class=calendar>
+		
+			  <div class=calendar-controls>
+			    <a title="Previous month" class=calendar-prev href=#></a>    
+			    <span id=date-header>July 2011</span>
+			    <a title="Next month" class=calendar-next href=#></a>
+			  </div>
+			  <table>
+			    <thead>
+			      <tr>
+			        <th scope=col>M</th>
+			        <th scope=col>T</th>
+			        <th scope=col>W</th>
+			        <th scope=col>T</th>
+			        <th scope=col>F</th>
+			        <th scope=col>S</th>
+			        <th scope=col class=last>S</th>
+			      </tr>
+			    </thead>
+			    <tbody id=calendar-body>
+			
+			
+			    </tbody>
+			  </table>
+		
+		</div>
+		
+		<script type=text/javascript>
+			var calendar = new Calendar();
+			
+			calendar.addBeforeMonthChangeEvent(function(date){
+				console.log(date);
+			});
+
+			calendar.addAfterMonthChangeEvent(function(date){
+				console.log(date);
+				$('#date-header').html(calendar.getMonth() + " " + date.getFullYear());
+			});
+
+			$('a.calendar-prev').click(function(){
+				calendar.back();
+			});
+
+			$('a.calendar-next').click(function(){
+				calendar.forward();
+			});
+			
+			calendar.render('#calendar-body', 'tr', '#calendar-day');
+		</script>
+	
+		
+	</body>
+
+</html>

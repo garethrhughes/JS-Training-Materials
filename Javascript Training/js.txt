@@ -1,0 +1,229 @@
+Programming Javascript
+
+Okay, this is an introduction to some of the cool things you can do in Javascript. Along with some  examples.
+
+=== Anonymous Functions ==
+
+One of the more common things when writing javascript is to simply open some script tags and start typing and you often end up with code such as:
+
+<script type="text/javascript">
+	var map = new googlemaps();
+	// setup etc
+</script>
+
+While there is generally no problem with this and it will work we now have a map variable attached to the window object and global. If any other script were to use the map variable you may have problems.
+
+With anonymous functions you can take all of your setup and exectute is completely inside its own private scope. See this example;
+
+<script type="text/javascript">
+	var test = "test";
+	console.log(test);
+</script>
+
+Now if we move this into an anonymous function
+
+<script type="text/javascript">
+	(function(){
+		var test = "test";
+		console.log(test);
+	})();
+
+	console.log(test);
+</script>
+
+Test is the second console output will be undefined and will give you an error. Now any page specific setup will not be available in the global scope and you don't have to worry about any other scripts interfering with your code.
+
+== Passing strings to setTimout/setInterval == 
+
+I see this quite often and it is generally a bad idea and can always be avoided. Passing a string implies that it will need to be eval'd which is a performance hit and on top of that you lose scope.
+
+Because this is inside an anonymous function when setTimeout runs the scope is the window so it cannot see test.
+
+(function(){
+	function test() {
+		console.log("here!");
+	}
+	
+	setTimeout("test()", 100);
+})();
+
+However if you write it like the following and pass the function to setTimeout like it is a variable it will work as expected;
+
+(function(){
+	function test() {
+		console.log("here!");
+	}
+	
+	setTimeout(test, 100);
+})();
+
+You can even go as far as passing another anonymous function to setTimeout and inside that you can do whatever you need to do and maintain the surrounding scope
+
+(function(){
+	function test() {
+		console.log("here!");
+	}
+	
+	setTimeout(function(){
+		test();
+	}, 100);
+})();
+
+== Apply & 'this' ==
+
+This is a very useful function which can solve a lot of headaches and can help code re-use.
+Lets take the previous setTimeout example and change the output to "this"
+
+(function(){
+	function test() {
+		console.log(this);
+	}
+	
+	setTimeout(function(){
+		test();
+	}, 100);
+})();
+
+When this runs you see that "this" refers to the Window object which is fine in this case but what if you want it to refer to another object? You can do this
+
+(function(){
+	function test() {
+		console.log(this);
+	}
+	
+	setTimeout(function(){
+		test.apply(document.getElementsByTagName('body')[0]);
+	}, 100);
+})();
+
+And now "this" refers to the body element. This works on any function so can be very useful especially if you want to use the same event in multiple places. 
+
+You can also create a reference to 'this' that you can refer to when using callbacks, for example;
+
+(function(){
+	var someObject = {
+		test: function(){
+			console.log("test");
+		},
+		
+		doSomething: function(){
+			var t = this;
+			setTimeout(function(){
+				t.test();
+			});
+		}
+	}
+	
+	someObject.doSomething();
+})();
+
+As you can see it's not all that useful in this case because the object is named and can be referenced internally by "someObject.test()";
+
+It becomes more useful in code such as;
+
+(function(){
+	function Test() {}
+
+	Test.prototype.hello = function(){
+		var t = this;
+		setTimeout(function(){
+			t.test();
+		});
+	}
+
+	Test.prototype.test = function(){
+		console.log("Hello");
+	}
+
+	var test = new Test();
+	test.hello();
+})();
+
+Now that Test can be instantiated we have no name to reference so we need to use "this".
+
+== Common scope problem == 
+
+(function(){
+	function test(i) {
+		console.log(i);
+	}
+	
+	for(var i = 0; i < 10; i ++) {
+		setTimeout(function(){
+			test(i);
+		}, 500);
+	}
+})();
+
+This in theory is code that will output 0 - 9. But in reality beacuse the setTimeout executes in x amount of time a reference to i is captured and sent to the setTimeout method instead of the current number.
+
+(function(){
+	function test(i) {
+		console.log(i);
+	}
+	
+	for(var i = 0; i < 10; i ++) {
+		(function(i){
+			setTimeout(function(){
+				test(i);
+			}, 500);
+		})(i);
+	}
+})();
+
+Now i is being passed into an anonymous function and captured in the scope of the anonymous function so that when the timeout executes it will now have the correct value
+
+== Functions & Feature detection == 
+
+Functions in Javascript can be passed around like variables as we have seen in some of the examples above.
+
+It lets you do things such as 
+
+(function(){
+	var doSomething = function(){
+		console.log('something');
+	}
+	
+	window.test = doSomething;
+})();
+
+test();
+
+As the window object is basically access to the global scope doing this will allow this function to be used globally while hiding everything else inside the anonymous scope.
+
+In javascript functions can also return other functions
+
+(function(){
+	function test(i) {
+		console.log(i);
+	}
+	
+	function createCallback(i) {
+		return function(){
+			test(i);
+		}
+	}
+	
+	for(var i = 0; i < 10; i ++) {
+		setTimeout(createCallback(i), 500);
+	}
+})();
+
+This is another example of how to solve the scope problem mentioned earlier and will output the numbers 0-9.
+
+Because functions can be treated as variables you can also check for the existance of functions easilly, this is a great way to do feature detection a common example of this is
+
+function AttachEvent(eventType, object, func){
+	if(window.addEventListener){
+		object.addEventListener(eventType, func, false);
+	} else {
+		object.attachEvent("on" + eventType, func);
+	}
+}
+
+This will check if the function "addEventListener" exists, if it does exist we can use this to attach an event, this is how you attach an event in most browsers.
+
+If this doesn't exist we use attachEvent which is how it's done in Internet Explorer. We can check for most browser features this way.
+
+This is a lot better than checking for a specific user agent. Do it this way whenever possible. There are limitations with user agent sniffing such as if you check for a specific browser and that browser updates you have a website that could work in that browser but doesn't'. If you check for the feature when it becomes available the site will now work as expected.
+

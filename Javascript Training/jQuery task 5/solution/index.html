@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery Example Solution</title>
+		<meta charset=UTF-8 />
+		
+		<script type=text/javascript src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+		<script type=text/javascript>
+
+			$(function(){
+				var container = $('#container');
+
+				$('#button').click(function(){
+					container.fadeOut(function(){
+						container.load('ajax-page.html', function(){
+							container.fadeIn();
+						});
+					});
+					
+				});
+				
+			});
+			
+		</script>
+		
+		<style type=text/css>
+			* { padding: 0; margin: 0; }
+			#container { background-color: green; }
+		</style>
+		
+	</head>
+
+	<body>
+		<input id=button value=Load type=submit />
+		<div id=container>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean iaculis, ligula nec ornare suscipit, dui nulla sodales lectus, id accumsan est magna nec tortor. Fusce sem massa, lacinia ut consectetur eu, condimentum sit amet nulla. Phasellus tempor mauris tincidunt tellus faucibus vestibulum viverra mi commodo. Sed et sem eros. Donec aliquam odio tincidunt augue laoreet commodo. Etiam congue enim aliquet orci accumsan ut semper justo fringilla. Nunc luctus erat id lectus consequat porttitor. Sed nibh felis, cursus eget fringilla sed, ullamcorper in leo. Duis condimentum, nibh vitae mattis viverra, mauris est rhoncus metus, vel gravida leo ligula vitae magna. Aenean id quam quis arcu elementum tempor id in ligula. Phasellus a ipsum nec odio gravida rutrum vitae eget nulla. Donec imperdiet adipiscing sollicitudin.</p> 
+			
+			<p>Mauris sed fermentum eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vestibulum venenatis arcu vitae tempus. Mauris facilisis euismod eleifend. Nulla egestas luctus urna, at placerat dolor posuere id. Nam sagittis lobortis enim ac rhoncus. Ut et est augue. Quisque laoreet nunc vel felis vulputate in tristique odio varius. Suspendisse potenti. Donec blandit tincidunt velit nec ornare. Aenean quis venenatis tortor. Donec id leo at tellus gravida laoreet id non dui. Duis sed tellus velit, et adipiscing dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet lectus eget odio condimentum rhoncus.</p>		
+		</div>
+	</body>
+
+</html>

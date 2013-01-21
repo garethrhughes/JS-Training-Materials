@@ -1,0 +1,23 @@
+Create a page with a google map that detects the users location and also provide a basic location search box
+
+Less common than the usual mapping stuff but good to get an understading of how this works.
+
+Objectives
+
+1) Map on page
+2) Set the map centre and zoom to something sensible
+3) Detect the users location and position the map and add a marker to this location
+4) Have an input which takes a location search and focusses the map on this point
+5) Works in IE 8(except Geolocation as it's not supported), Firefox and Chrome
+
+-- Bonus points if it still allows multiple maps per page
+
+Notes
+http://en.wikipedia.org/wiki/W3C_Geolocation_API may be useful
+This style may be helpful if you're hopeless at css
+
+<style type=text/css>
+	.map { width: 600px; height: 400px; }
+</style>
+
+Time Required <2h

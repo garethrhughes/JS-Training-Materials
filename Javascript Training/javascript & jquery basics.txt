@@ -1,0 +1,79 @@
+This is a basic Javascript and jQuery introduction intended for designers or people with very little knowledge.
+
+= Selectors =
+
+The most useful that jQuery offers (in my opinion) is the selector engine, it uses CSS selectors plus some additional features to return a collection of elements from the DOM. You should be careful with the selectors that you use as they have varying degrees of performance.
+
+Examples
+
+$("div#content a.link") = all a's with a class of link inside a div with the id of content.
+$("input[type=checkbox]) = all checkboxes.
+etc
+
+The selectors backed by native dom functions such as classnames, ids and tag name are much quicker than using names and properties.
+
+You can also use jQuery to refine your selectors by doing a find on an existing selector
+
+$("div#content").find('a.link') = same result as $("div#content a.link")
+
+= Events = 
+
+Javascript is basically used to deal with user triggered events in the web browser. It has a messy history and the Document Object Model has varying implementations, IE having the least standard version. Because of this even the simple task of handling an event has 2 different approaches.
+
+Internet Explorer 
+
+	element.attachEvent('onclick', listener);
+	
+Others
+	
+	element.addEventListener('click', listener, false);
+	
+This gives us a problem already, but because in Javascript we can treat functions as they were variables we can check for the existance of functions before we attempt to call them. You have probably seen code like this;
+
+if(window.attachEvent){
+	element.attachEvent('onclick', listener);
+} else {
+	element.addEventListener('click', listener, false);
+}
+
+This is where libraries like jQuery come in, jQuery simplyfies this to;
+
+$(element).click(function(){
+	//do something
+});
+
+= DOM = 
+
+The DOM (Document Object Model) is the problematic part of Javascript. Different browser vendors support different methods and events. 
+
+Examples
+
+IE supports very useful mouseenter and mouseleave events that nobody else has implemented and outerHtml isn't supported in Firefox. There are also differences in the handling of dropdowns and many other problems.
+
+= Functions = 
+
+Functions in javascript can be treated in the same manner as variables and can be passed into other functions. This can be very powerful.
+
+A function can be defined like 
+
+function doSomething(){
+}
+
+or 
+
+var doSomething = function(){
+}
+
+You can do things like doSomething.apply($('#someElement')); to change the scope of the function (that means that "this" will refer to $('#someElement') inside doSomething).
+
+= Animate/CSS =
+
+These can be used to create effects by changing the style of elements on the fly.
+
+Animate is very powerful and will animate an element from the current style to the provided, if you animate the left value when an element is correctly positioned it will smoothly move to the new location.
+
+$('#something').animate({ 'left' : -500px });
+
+Css will just update the style immediately.
+
+$('#something').css({ 'left' : -500px });

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery Example Solution</title>
+		<meta charset=UTF-8 />
+		
+		<script type=text/javascript src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+		<script type=text/javascript>
+
+			(function(){
+				var updateColour = function(){
+					var className = ($('#container input:not(:checked)').length == 0) ? 'success' : 'fail';
+					
+					$('#container').removeClass('success')
+								   .removeClass('fail')
+								   .addClass(className);
+				};
+
+				$(function(){
+					$('#container input').change(function(){
+						updateColour();
+					});
+
+					updateColour();
+				});
+				
+			})();
+			
+		</script>
+		
+		<style type=text/css>
+			* { padding: 0; margin: 0; }
+			#container.fail { background-color: red; }
+			#container.success { background-color: green; }
+		</style>
+		
+	</head>
+
+	<body>
+		<div id=container>
+		
+			<input type=checkbox name=check />
+			<input type=checkbox name=check />
+			<input type=checkbox name=check />
+			<input type=checkbox name=check />
+			<input type=checkbox name=check />
+			
+		</div>
+	</body>
+
+</html>

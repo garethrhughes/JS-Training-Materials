@@ -1,0 +1,24 @@
+Create a page with a google map.
+
+This is a very common feature and fairly straight forward to implement and there are docs available.
+
+Objectives
+
+1) Map on page
+2) Set the map centre and zoom to something sensible
+3) Add multiple pins on the map
+4) Support X amounts of maps on one page.
+5) Works in IE 8, Firefox and Chrome
+
+Notes
+
+We want to avoid any server side tech for these examples so any mapping data can be hardcoded Json.
+All Javascript can be inline if needed, jQuery acceptable but no mapping plugins.
+
+This style may be helpful if you're hopeless at css
+
+<style type=text/css>
+	.map { width: 600px; height: 400px; }
+</style>
+
+Time Required 1h

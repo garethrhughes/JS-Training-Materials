@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>jQuery Example Solution</title>
+		<meta charset=UTF-8 />
+		
+		<script type=text/javascript src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+		<script type=text/javascript>
+			$(function(){
+				var square = $('#square');
+				square.animate({'left' : $(window).width() - square.width()}, 5000);
+			});
+		</script>
+		
+		<style type=text/css>
+			* { padding: 0; margin: 0; }
+			#square { width: 100px; height: 100px; background-color: red; position: relative; }
+		</style>
+		
+	</head>
+
+	<body>
+		<div id=square></div>
+	</body>
+
+</html>
